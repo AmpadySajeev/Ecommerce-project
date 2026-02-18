@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+
+    <div class="row justify-content-center align-items-center m-1">
+
+        <div class="col-12 col-md-8 col-lg-5 shadow-lg my-5 p-4 text-center rounded-3">
+            
+            <h2 class="display-5 text-danger">Order Summary</h2>
+            
+            <ul class="list-group mt-4">
+                {% for item in cart_items %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-normal"> {{item.product.name}} x {{item.quantity}} </span>
+                        <span> {{item.get_total_price}} </span>
+                    </li>    
+                {% endfor %}
+            </ul>
+
+            <div class="d-flex justify-content-between p-2 mt-3 fw-bold">
+                <p class="mb-0">Total</p>
+                <p class="mb-2">{{ total_amount }}</p>
+            </div>
+            <hr>
+
+            <h4 class="mb-3">Delivery details</h4>
+
+            <form action="" method="post" class="text-start">
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label for="" class="form-label">Full Name</label>
+                    <input type="text" name="full_name" class="form-control" required>
+                    
+                </div>
+                <div class="mb-3">
+
+                    <label for="" class="form-label">Phone</label>
+                    <input type="text" name="phone" class="form-control" required>
+                    
+                </div>
+                <div class="mb-3">
+
+                    <label for="" class="form-label">Address</label>
+                    <textarea name="address" class="form-control" required></textarea>
+                    
+                </div>
+
+                <button type="submit" class="btn btn-outline-danger w-100 mt-2 py-2 ">Proceed to Payment</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

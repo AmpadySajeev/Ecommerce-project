@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="hero-section d-flex justify-content-center align-items-center">
+  <div>
+    <div class="hero-text text-light text-center px-3">
+      <h1 class="display-1 fw-bold">Step Into Style</h1>
+      <p class="lead fw-normal">Explore premium sneakers that blend performance and personality — built for every move
+        you make.</p>
+    </div>
+    <div class="p-3 mt-2 gap-2 d-flex justify-content-center align-items-center">
+      <a href="{% url 'filteredProducts' 'running' %}" class="btn btn-dark btn">Running --></a>
+      <a href="{% url 'filteredProducts' 'originals' %}" class="btn btn-dark btn">Originals --></a>
+      <a href="{% url 'filteredProducts' 'training' %}" class="btn btn-dark btn">Training --></a>
+      <a href="{% url 'products' %}" class="btn btn-light btn">Shop All --></a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

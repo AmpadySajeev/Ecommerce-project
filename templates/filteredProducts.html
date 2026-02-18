@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<h1>hi</h1>
+{% block content %}
+
+<div class="container mt-4 p-3">
+    <h1 class="fw-bold p-2 fs-3">Men's {{category}} shoes</h1>
+    <div class="row mt-4 g-4">
+        {% for shoe in shoes %}
+        
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            
+            <div class="card h-100 shadow">
+                <img src="{{shoe.image.url}}" class="card-img-top img-fluid" alt="">
+                <div class="card-body ">
+
+                    <p class="card-text fw-bold mb-1">₹{{shoe.price}}</p>
+                    
+                    <h5 class="card-title mb-1">{{shoe.name}}</h5>
+                    <a 
+                    href="{% url 'filteredProducts' shoe.category.slug %}" 
+                    class="text-decoration-none text-dark card-text">
+                    {{shoe.category.name}}
+                    </a>
+                    <p class="card-text mb-1 text-muted">{{shoe.brand}}</p>
+
+                    <div class="d-flex flex-column justify-content-center">
+                        <a href="{% url 'detailPage' shoe.id %}" class="btn btn-success btn-sm w-100 py-2 mt-2">View
+                            details</a>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

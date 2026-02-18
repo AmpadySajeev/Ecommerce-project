@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+
+    <div class="d-flex justify-content-center align-items-center">
+
+        <div class=" shadow-lg w-50 my-5 p-4 text-center rounded-3">
+            
+            <h2 class="display-4 text-success">Payment Success!</h2>
+            <p class="lead mt-3"></p>
+            <a href="{% url 'products' %}" class="p-2 btn btn-primary mt-4">Continue shopping</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
