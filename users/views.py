@@ -98,8 +98,6 @@ def admin_orders(request):
 
     total_orders = Order.objects.all().order_by('-id')
 
-    for order in total_orders:
-        order.amount = order.amount / 100
 
     context = {
         'total_orders' : total_orders
