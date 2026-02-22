@@ -66,7 +66,7 @@ def admin_page(request):
         'total_products' : total_products,
         'total_orders' : total_orders,
         'total_users' : total_users,
-        'total_revenue' : total_revenue / 100
+        'total_revenue' : total_revenue 
     }
     return render(request, 'users/adminPage.html', context)
 
