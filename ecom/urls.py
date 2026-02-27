@@ -15,6 +15,7 @@ urlpatterns = [
     path('search/', search_products, name='search'),
     path('checkout/', checkout, name='checkout'),
     path('payment-success/', payment_success, name='payment-success'),
+    path('payment-failed/', payment_failed, name='payment-failed'),
     path('order-history', order_history, name = 'order_history'),
     path('payment', payment, name = 'payment')
 

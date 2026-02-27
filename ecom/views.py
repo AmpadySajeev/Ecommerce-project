@@ -162,6 +162,10 @@ def payment(request):
     
     return render(request, 'payment.html', context)
 
+def payment_failed(request):
+
+    return render(request, 'paymentFail.html')
+
 @csrf_exempt
 def payment_success(request):
 
@@ -170,6 +174,9 @@ def payment_success(request):
 
     razorpay_order_id = request.session.get('razorpay_order_id')
     checkout_data = request.session.get('checkout_data')
+
+    if not payment_id or not signature or not razorpay_order_id or not checkout_data:
+        return render(request, 'paymentFail.html')
 
     client = razorpay.Client(auth=(
         settings.RAZORPAY_KEY_ID,
@@ -188,6 +195,7 @@ def payment_success(request):
 
         cart_items = Cart.objects.filter(user = request.user)
         total_amount = sum(item.get_total_price() for item in cart_items)
+        
 
         order = Order.objects.create(
             user = request.user,
@@ -216,8 +224,8 @@ def payment_success(request):
 
         return render(request, 'paymentSuccess.html')
     
-    except:
-
+    except Exception as e:
+        print(f"Payment verification failed: {e}")
         return render(request, 'paymentFail.html')
 
         

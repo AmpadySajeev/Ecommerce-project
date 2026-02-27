@@ -49,9 +49,15 @@
         "description": "ShoeCart order",
         "order_id": "{{ razorpay_order_id }}",
         "handler": function (response) {
-            console.log(response)
+            console.log("Payment success handler called", response);
             window.location.href = "/payment-success/?payment_id=" + response.razorpay_payment_id + "&signature=" + response.razorpay_signature;
 
+        },
+        "modal" : {
+            "ondismiss" : function() {
+                console.log("Payment cancelled/dismissed");
+                window.location.href = "/payment-failed/"
+            }
         },
         "prefill": {
             "name": "{{ user.username }}",
