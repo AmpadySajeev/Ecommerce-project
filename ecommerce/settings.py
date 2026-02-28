@@ -87,8 +87,10 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 #     }
 # }
 
+DATABASE_URL = os.getenv("DATABASE_PUBLIC_URL")
+
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_PUBLIC_URL'))
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
 
