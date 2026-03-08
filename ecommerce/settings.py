@@ -45,12 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'ecom',
     'users',
     'widget_tweaks',
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
     'cloudinary'
 ]
 
