@@ -39,15 +39,15 @@ def login_page(request):
                 return redirect('/')
             
         else:
-            username = request.POST.get('username')
+            email = request.POST.get('username')
             try:
-                user = CustomUser.objects.get(username = username)
+                user = CustomUser.objects.get(email = email)
 
                 if not user.is_active:
                     messages.error(request, "Your account has been restricted. Please contact support.")
                 else:
                     messages.error(request, "Invalid username or password")
-                    
+
             except CustomUser.DoesNotExist:
                 messages.error(request, "User doesnot exist")
                 
