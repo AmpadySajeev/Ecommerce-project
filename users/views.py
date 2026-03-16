@@ -30,18 +30,26 @@ def login_page(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-
             
-
             if user:
                 login(request, user)
                 
                 if user.is_staff:
                     return redirect(admin_page)
                 return redirect('/')
+            
         else:
-            for error in form.non_field_errors():
-                messages.error(request, error)
+            username = request.POST.get('username')
+            try:
+                user = CustomUser.objects.get(username = username)
+
+                if not user.is_active:
+                    messages.error(request, "Your account has been restricted. Please contact support.")
+                else:
+                    messages.error(request, "Invalid username or password")
+                    
+            except CustomUser.DoesNotExist:
+                messages.error(request, "User doesnot exist")
                 
                 
     else:

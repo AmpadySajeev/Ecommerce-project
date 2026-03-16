@@ -2,6 +2,9 @@
 {% load widget_tweaks %}
 {% block content %}
 <div class="container mt-5" style="max-width: 500px;">
+    {% for message in messages %}
+        <div class="alert alert-danger">{{message}}</div>
+    {% endfor %}
     <div class="shadow p-4 rounded-4">
         <h1 class="text-center text-primary mb-4">Login</h1>
 
