@@ -12,6 +12,6 @@ urlpatterns = [
     path('admin_add_product', admin_add_product, name = 'add_product'),
     path('admin_edit_product/<int:product_id>', admin_edit_product, name = 'edit_product'),
     path('admin_delete_product/<int:product_id>', admin_delete_product, name = 'delete_product'),
-    path('admin_restrict_action<int:user_id>', admin_deactivate_user, name = 'deactivate_user'),
+    path('admin_restrict_action/<int:user_id>', admin_deactivate_user, name = 'deactivate_user'),
     path('admin_activate_user/<int:user_id>', admin_activate_user, name = 'activate_user'),
 ]

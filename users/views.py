@@ -163,7 +163,7 @@ def admin_deactivate_user(request, user_id):
         user.is_active = False
         user.save()
 
-        return redirect(admin_users)
+        return redirect('adminUsers')
 
     return render(request, 'users/deactivateUser.html',{'user' : user, 'action' : 'deactivate'})
 
@@ -175,7 +175,7 @@ def admin_activate_user(request, user_id):
         user.is_active = True
         user.save()
 
-        return redirect(admin_users)
+        return redirect('adminUsers')
     
     
     return render(request, 'users/deactivateUser.html', {'user' : user, 'action' : 'activate'})
